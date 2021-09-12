@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Placing OBO ontologies under COB - Core Ontology for Biology and Biomedicine</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Placing OBO ontologies under COB";
+    var mkdocs_page_input_path = "obo-bridge.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Core Ontology for Biology and Biomedicine</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Getting started</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Tour</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../exploring/">Exploring COB</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Placing OBO ontologies under COB</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#cob-to-external">COB to External</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-entries">Example entries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#multiple-obo-ids-for-one-cob-id">Multiple OBO IDs for one COB ID</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#subclass-links">subClass links</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#formal-lack-of-commitment">Formal lack of commitment</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#proposing-changes-to-cob-to-external">Proposing changes to cob-to-external</a>
+    </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../integration-tests/">Integration Tests</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">How-to guides</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Standard ODK workflows</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/">Overview</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/EditorsWorkflow/">Editors Workflow</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/ReleaseWorkflow/">Release Workflow</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/RepoManagement/">Manage your ODK Repository</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/SettingUpDockerForODK/">Setting up Docker for ODK</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/UpdateImports/">Imports management</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/ManageDocumentation/">Managing the documentation</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/ContinuousIntegration/">Continuous Integration</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../odk-workflows/RepositoryFileStructure/">Your ODK Repository Overview</a>
+                </li>
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Other</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../cite/">Cite</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../history/">History</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Core Ontology for Biology and Biomedicine</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tour &raquo;</li>
+        
+      
+    
+    <li>Placing OBO ontologies under COB</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="placing-obo-ontologies-under-cob">Placing OBO ontologies under COB</h1>
+<p>COB is intended as a central place where different ontologies within
+OBO can discuss and agree where the different root terms across OBO
+belong in the COB hierarchy.</p>
+<p>The source of truth for this is a file "COB to External"</p>
+<h2 id="cob-to-external">COB to External</h2>
+<p>The source for the file is in the <a href="https://github.com/OBOFoundry/COB/blob/master/src/ontology/components">src/ontology/components</a> folder in GitHub:</p>
+<ul>
+<li><a href="https://github.com/OBOFoundry/COB/blob/master/src/ontology/components/cob-to-external.tsv">cob-to-external.tsv</a></li>
+</ul>
+<p>The file is in <a href="https://github.com/mapping-commons/SSSOM">SSSOM tsv</a> format.</p>
+<h2 id="example-entries">Example entries</h2>
+<p>The following entries use the owl:equivalentClass predicate to indicate that the COB IDs are equivalent to the the corresponding OBO concept.</p>
+<table>
+<thead>
+<tr>
+<th>subject_id</th>
+<th>subject_label</th>
+<th>predicate_id</th>
+<th>object_id</th>
+<th>object_label</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COB:0000003</td>
+<td>mass</td>
+<td>owl:equivalentClass</td>
+<td>PATO:0000125</td>
+<td>mass</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000004</td>
+<td>charge</td>
+<td>owl:equivalentClass</td>
+<td>PATO:0002193</td>
+<td>electric</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000006</td>
+<td>material entity</td>
+<td>owl:equivalentClass</td>
+<td>BFO:0000040</td>
+<td>material entity</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000008</td>
+<td>proton</td>
+<td>owl:equivalentClass</td>
+<td>CHEBI:24636</td>
+<td>proton</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000017</td>
+<td>cell</td>
+<td>owl:equivalentClass</td>
+<td>CL:0000000</td>
+<td>cell</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000026</td>
+<td>processed material entity</td>
+<td>owl:equivalentClass</td>
+<td>OBI:0000047</td>
+<td>processed material</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000031</td>
+<td>immaterial entity</td>
+<td>owl:equivalentClass</td>
+<td>BFO:0000041</td>
+<td>immaterial entity</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000033</td>
+<td>realizable</td>
+<td>owl:equivalentClass</td>
+<td>BFO:0000017</td>
+<td>realizable entity</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="multiple-obo-ids-for-one-cob-id">Multiple OBO IDs for one COB ID</h2>
+<p>Ideally no COB ID is equivalent to more than one OBO ID, but in
+practice different ontologies have minted IDs for what turned out to
+be the same concept. COB serves as a useful clearinghouse for making
+these lack of orthogonality transparent.</p>
+<p>For example, the COB concept of "organism" (which includes viruses):</p>
+<table>
+<thead>
+<tr>
+<th>subject_id</th>
+<th>subject_label</th>
+<th>predicate_id</th>
+<th>object_id</th>
+<th>object_label</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COB:0000022</td>
+<td>organism</td>
+<td>owl:equivalentClass</td>
+<td>NCBITaxon:1</td>
+<td>root</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000022</td>
+<td>organism</td>
+<td>owl:equivalentClass</td>
+<td>OBI:0100026</td>
+<td>organism</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000022</td>
+<td>organism</td>
+<td>owl:equivalentClass</td>
+<td>CARO:0001010</td>
+<td>organism or virus or viroid</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="subclass-links">subClass links</h2>
+<p>we can also declare the OBO class to be a subclass of the COB class. For example, the concept of a cell in the plant ontology is the species equivalent of the species-generic COB cell, so formally it is a subclass:</p>
+<table>
+<thead>
+<tr>
+<th>subject_id</th>
+<th>subject_label</th>
+<th>predicate_id</th>
+<th>object_id</th>
+<th>object_label</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COB:0000017</td>
+<td>cell</td>
+<td>owl:equivalentClass</td>
+<td>CL:0000000</td>
+<td>cell</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000017</td>
+<td>cell</td>
+<td>sssom:superClassOf</td>
+<td>PO:0009002</td>
+<td>plant cell</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000018</td>
+<td>native cell</td>
+<td>owl:equivalentClass</td>
+<td>CL:0000003</td>
+<td>native cell</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000018</td>
+<td>native cell</td>
+<td>sssom:superClassOf</td>
+<td>XAO:0003012</td>
+<td>xenopus cell</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000018</td>
+<td>native cell</td>
+<td>sssom:superClassOf</td>
+<td>ZFA:0009000</td>
+<td>zebrafish cell</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000018</td>
+<td>native cell</td>
+<td>sssom:superClassOf</td>
+<td>PO:0025606</td>
+<td>native plant cell</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000019</td>
+<td>cell in vitro</td>
+<td>owl:equivalentClass</td>
+<td>CL:0001034</td>
+<td>cell in vitro</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<p>Similarly, we can record the fact that we are committing to group SO entities as material entities</p>
+<table>
+<thead>
+<tr>
+<th>subject_id</th>
+<th>subject_label</th>
+<th>predicate_id</th>
+<th>object_id</th>
+<th>object_label</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COB:0000006</td>
+<td>material entity</td>
+<td>sssom:superClassOf</td>
+<td>SO:0000110</td>
+<td>sequence_feature</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000006</td>
+<td>material entity</td>
+<td>sssom:superClassOf</td>
+<td>SO:0001060</td>
+<td>sequence_variant</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000006</td>
+<td>material entity</td>
+<td>sssom:superClassOf</td>
+<td>SO:0001260</td>
+<td>sequence_collection</td>
+<td>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="formal-lack-of-commitment">Formal lack of commitment</h2>
+<p>We can record a formal lack of commitment in cob-to-external:</p>
+<table>
+<thead>
+<tr>
+<th>subject_id</th>
+<th>subject_label</th>
+<th>predicate_id</th>
+<th>object_id</th>
+<th>object_label</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COB:0000011</td>
+<td>atom</td>
+<td>skos:closeMatch</td>
+<td>CHEBI:33250</td>
+<td>atom</td>
+<td>.</td>
+</tr>
+<tr>
+<td>COB:0000013</td>
+<td>molecular entity</td>
+<td>skos:closeMatch</td>
+<td>CHEBI:23367</td>
+<td>molecular entity</td>
+<td>No exact match in CHEBI</td>
+</tr>
+<tr>
+<td>COB:0000013</td>
+<td>molecular entity</td>
+<td>skos:closeMatch</td>
+<td>CHEBI:25367</td>
+<td>molecule</td>
+<td>This is electrically neutral in CHEBI but in COB it is generic. We should make it union of molecule and polyatomic ion</td>
+</tr>
+</tbody>
+</table>
+<p>We cannot make these equivalent because we would end up with incoherencies in COB</p>
+<h2 id="proposing-changes-to-cob-to-external">Proposing changes to cob-to-external</h2>
+<p>Anyone is welcome to make Pull Requests on the cob-to-external file. The pull request will be discussed openly and transparently, and anyone can make comments on the GitHub PR</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../integration-tests/" class="btn btn-neutral float-right" title="Integration Tests">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../exploring/" class="btn btn-neutral" title="Exploring COB"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../exploring/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../integration-tests/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
